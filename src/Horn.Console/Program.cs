@@ -57,6 +57,10 @@ namespace Horn.Console
             {
                 log.Info(eve.Message);
             }
+            catch (MissingBuildFileException mbfe)
+            {
+                log.Info(mbfe.Message);
+            }
         }
 
         private static void InitialiseIoC(ICommandArgs commandArgs)
