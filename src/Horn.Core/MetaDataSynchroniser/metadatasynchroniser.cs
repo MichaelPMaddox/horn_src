@@ -8,7 +8,7 @@ namespace Horn.Core.Tree.MetaDataSynchroniser
     {
         private readonly SourceControl sourceControl;
 
-        public readonly static string PackageTreeUri = HornConfig.Settings.PackageTreeUri;
+        public readonly static string PackageTreeUri = (HornConfig.Settings == null) ? null : HornConfig.Settings.PackageTreeUri;
 
         public void SynchronisePackageTree(IPackageTree packageTree)
         {

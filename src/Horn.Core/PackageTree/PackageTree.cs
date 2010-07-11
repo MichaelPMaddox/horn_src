@@ -34,11 +34,26 @@ namespace Horn.Core.PackageStructure
 
         public virtual IPackageTree[] Children
         {
-            get { return children.ToArray(); }
+            get
+            {
+                if (children == null)
+                {
+                    return new IPackageTree[0];
+                }
+                else
+                {
+                    return children.ToArray();
+                }
+            }
         }
 
         public virtual void BuildTree(IPackageTree parent, DirectoryInfo directory)
         {
+            if (directory == null)
+            {
+                throw new ArgumentNullException("directory");
+            }
+
             Parent = parent;
 
             children = new List<IPackageTree>();

@@ -24,6 +24,11 @@ namespace Horn.Core.PackageCommands
 
         public virtual void Execute(IPackageTree packageTree)
         {
+            if (packageTree == null)
+            {
+                throw new ArgumentNullException("packageTree");
+            }
+
             Initialise();
 
             LogPackageDetails();
@@ -149,6 +154,21 @@ namespace Horn.Core.PackageCommands
 
         public PackageBuilder(IGet get, IProcessFactory processFactory, ICommandArgs commandArgs)
         {
+            if (get == null)
+            {
+                throw new ArgumentNullException("get");
+            }
+
+            if (processFactory == null)
+            {
+                throw new ArgumentNullException("processFactory");
+            }
+
+            if (commandArgs == null)
+            {
+                throw new ArgumentNullException("commandArgs");
+            }
+
             this.get = get;
             this.processFactory = processFactory;
             this.commandArgs = commandArgs;

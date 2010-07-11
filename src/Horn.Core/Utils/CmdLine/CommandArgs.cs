@@ -41,6 +41,26 @@ namespace Horn.Core.Utils.CmdLine
 
         public CommandArgs(IDictionary<string, IList<string>> switches)
         {
+            if (switches == null)
+            {
+                throw new ArgumentNullException("switches");
+            }
+
+            if (!switches.Keys.Contains("install"))
+            {
+                throw new ArgumentOutOfRangeException("The switches parameter must contain the install key.");
+            }
+
+            if (switches["install"] == null)
+            {
+                throw new ArgumentOutOfRangeException("switches[\"install\"] cannot be null.");
+            }
+
+            if (switches["install"].Count == 0)
+            {
+                throw new ArgumentOutOfRangeException("switches[\"install\"].Count cannot be zero.");
+            }
+
             PackageName = switches["install"][0];
 
             RebuildOnly = switches.Keys.Contains("rebuildonly");

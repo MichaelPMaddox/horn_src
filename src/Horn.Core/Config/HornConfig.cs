@@ -16,7 +16,14 @@ namespace Horn.Core.Config
         [ConfigurationProperty("packagetreeuri", IsRequired = true)]
         public string PackageTreeUri
         {
-            get { return (string)this["packagetreeuri"]; }
+            get
+            {
+                if (this == null)
+                {
+                    return null;
+                }
+                return (string)this["packagetreeuri"];
+            }
             set { this["packagetreeuri"] = value; }
         }
 
